@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Deen Companion Pro</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.png">
+</head>
+<body>
+
+<header>
+<h1>🕌 My Deen Companion</h1>
+<div class="mode-toggle">
+<button onclick="toggleMode()">🌙 / ☀️</button>
+<select id="lang-select" onchange="changeLang()">
+<option value="en">English</option>
+<option value="ur">اردو</option>
+</select>
+</div>
+<p id="greg-date"></p>
+<p id="hijri-date"></p>
+</header>
+
+<main>
+<div class="tabs">
+<button class="tab-btn active" onclick="openTab('verse')">📖 Verse</button>
+<button class="tab-btn" onclick="openTab('tasbeeh')">📿 Tasbeeh</button>
+<button class="tab-btn" onclick="openTab('prayer')">🕌 Prayer</button>
+<button class="tab-btn" onclick="openTab('deed')">🎲 Good Deed</button>
+<button class="tab-btn" onclick="openTab('hadith')">📜 Hadith</button>
+</div>
+
+<section id="verse" class="tab-content active">
+<h2>Verse of the Day</h2>
+<p id="verse-text">Loading...</p>
+<button onclick="shareText('verse-text')">Share</button>
+</section>
+
+<section id="tasbeeh" class="tab-content">
+<h2>Tasbeeh Counter</h2>
+<p id="tasbeeh-count">0</p>
+<div class="btn-group">
+<button onclick="increaseTasbeeh()">+1</button>
+<button onclick="resetTasbeeh()">Reset</button>
+</div>
+<p>Streak: <span id="tasbeeh-streak">0</span> days</p>
+<p>History: <span id="tasbeeh-history">0</span></p>
+<div id="progress-chart"></div>
+</section>
+
+<section id="prayer" class="tab-content">
+<h2>Prayer Tracker</h2>
+<div class="prayers">
+<label><input type="checkbox" id="fajr"> Fajr</label>
+<label><input type="checkbox" id="zuhr"> Zuhr</label>
+<label><input type="checkbox" id="asr"> Asr</label>
+<label><input type="checkbox" id="maghrib"> Maghrib</label>
+<label><input type="checkbox" id="isha"> Isha</label>
+</div>
+<button onclick="savePrayers()">Save</button>
+<p>Streak: <span id="prayer-streak">0</span> days</p>
+<p>History: <span id="prayer-history">0</span></p>
+</section>
+
+<section id="deed" class="tab-content">
+<h2>Daily Good Deed</h2>
+<p id="deed-text">Click below for a good deed suggestion!</p>
+<button onclick="newDeed()">Suggest Deed</button>
+</section>
+
+<section id="hadith" class="tab-content">
+<h2>Hadith of the Day</h2>
+<p id="hadith-text">Loading...</p>
+<button onclick="shareText('hadith-text')">Share</button>
+</section>
+
+<div id="qibla">🕋</div>
+
+<footer>
+<p>Made by Ans Riaz ❤️ | My Deen Companion Pro</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+</body>
+  </html>
